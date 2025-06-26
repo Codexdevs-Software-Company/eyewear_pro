@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@theme  {
+    --color-background : #000000;
+    --color-primary : #602A9A;
+    --color-secondary : #fff
+}
+.roundedButton{
+  @apply
+     bg-secondary
+     rounded-full
+     w-[5rem]
+     text-center;
+}
+
+.custom-dots .slick-dots li button:before {
+  font-size: 5px; /* Default: 6px */
+  background-color: black;
+  border: .5px solid #fff; /* Inactive color */
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.custom-dots .slick-dots li.slick-active button:before {
+  background-color: #fff; /* e.g. Tailwind's blue-500 */
+  color: #fff;
+  font-size: .5px;
+}

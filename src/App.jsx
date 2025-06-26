@@ -3,9 +3,10 @@ import Home from './pages/Home'
 import New_Arrival from './pages/New_Arrival';
 import Camera from './pages/Camera';
 import PageNotFound from './components/PageNotfound/PageNotFound';
+
 const App = () => {
   return (
-    <div className='bg-black w-[100%] h-screen overflow-x-hidden'>
+    <div className='bg-background w-[100%] h-screen overflow-x-hidden '>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path="/home" element={<Home />}></Route>
