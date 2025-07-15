@@ -1,6 +1,6 @@
 import Herosect from "../components/HomeComponents/Hero/Herosect";
 import ArrivalSect from "../components/HomeComponents/ArrivalSect/ArrivalSect";
-import SunOptrad from "../components/HomeComponents/SunOptRad/SunOptrad";
+import SunOptrad from "../components/HomeComponents/SunOptRad/SunOptRad";
 import UploadImage from "../components/HomeComponents/UploadImage/UploadImage";
 
 
