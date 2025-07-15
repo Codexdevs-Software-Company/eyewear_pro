@@ -3,17 +3,17 @@ export default function SunOptrad() {
   const glassesData = [
     {
         id:1,
-        pic:"/eyewear_pro/images/glassPic1.png",
+        pic:"images/glassPic1.png",
         title : "sun"
     },
     {
         id:2,
-        pic:"/eyewear_pro/images/glassPic2.png",
+        pic:"images/glassPic2.png",
         title : "optical"
     },
     {
       id:3,
-      pic: "/eyewear_pro/images/glassPic1.png",
+      pic: "images/glassPic1.png",
       title : "anti-rad"
     }
   ]

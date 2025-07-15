@@ -1,12 +1,12 @@
  const opticalData = [
-    "/eyewear_pro/images/opticalPic1.png",
-    "/eyewear_pro/images/opticalPic2.png",
-    "/eyewear_pro/images/opticalPic3.png",
-    "/eyewear_pro/images/opticalPic4.png",
-    "/eyewear_pro/images/opticalPic5.png",
-    "/eyewear_pro/images/opticalPic6.png",
-    "/eyewear_pro/images/opticalPic7.png",
-    "/eyewear_pro/images/opticalPic8.png",
-    "/eyewear_pro/images/opticalPic9.png",
+    "images/opticalPic1.png",
+    "images/opticalPic2.png",
+    "images/opticalPic3.png",
+    "images/opticalPic4.png",
+    "images/opticalPic5.png",
+    "images/opticalPic6.png",
+    "images/opticalPic7.png",
+    "images/opticalPic8.png",
+    "images/opticalPic9.png",
   ]
   export default opticalData
