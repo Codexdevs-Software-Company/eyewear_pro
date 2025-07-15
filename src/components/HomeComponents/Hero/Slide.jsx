@@ -1,9 +1,7 @@
-import React from 'react'
-
 export default function Slide({type,imgUrl,heading1,heading2,heading3,para1 ,heading4,para2}) {
     if(type ==="slide1"){
     return (
-    <div className=' bg-gradient-to-b from-[#602A9A] to-black  w-[100%] h-[30rem] flex justify-center  px-2 '>
+    <div className=' bg-radial from-[#602A9A] to-black  w-[100%] h-[30rem] flex justify-center  px-2 '>
            <div className='flex flex-col  justify-center gap-4 w-[25%]'>
                <div className='flex gap-1 justify-end'>
                    <h3 className='roundedButton'>{heading1}</h3>
@@ -25,7 +23,7 @@ export default function Slide({type,imgUrl,heading1,heading2,heading3,para1 ,hea
 }
 else if(type === "slide2"){
   return(
-    <div className=' bg-gradient-to-b from-[#602A9A] to-black  w-[100%] h-[30rem] flex  justify-center px-20'>
+    <div className=' bg-radial from-[#602A9A] to-black  w-[100%] h-[30rem] flex  justify-center px-20'>
             <div className=' flex  justify-start  w-[40%] relative '>
             <img className='  h-[100%] w-[100%] absolute bottom-5' src={imgUrl} alt={heading2} />
             </div>
@@ -40,7 +38,7 @@ else if(type === "slide2"){
 }
 else if(type === "slide3"){
   return(
-    <div className=' bg-gradient-to-b from-[#602A9A] to-black  w-[100%] h-[30rem] flex flex-row-reverse  justify-center px-20'>
+    <div className=' bg-radial from-[#602A9A] to-black  w-[100%] h-[30rem] flex flex-row-reverse  justify-center px-20'>
             <div className=' flex  justify-start  w-[40%] relative '>
             <img className='  h-[100%] w-[100%] absolute bottom-5' src={imgUrl} alt={heading2} />
             </div>

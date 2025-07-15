@@ -1,10 +1,10 @@
-import { ChevronLeft } from 'lucide-react'
+import { FaLessThan } from "react-icons/fa6";
 export default function PrevArrow({onClick}) {
   return (
     <div onClick={onClick} 
-          className='absolute -left-12 border border-amber-50  cursor-pointer text-secondary  top-1/2 transform -translate-y-1/2 z-10'
+          className='absolute -left-10 border border-amber-50  cursor-pointer text-secondary  top-1/2 transform -translate-y-1/2 z-10'
        >
-     < ChevronLeft size={36} />
+      <FaLessThan size={33}/>
     </div>
   )
 }
