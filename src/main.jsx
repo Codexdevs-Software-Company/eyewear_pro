@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { GlassProvider } from "./context/GlassContext.jsx";
 createRoot(document.getElementById("root")).render(
   <GlassProvider>
-    <BrowserRouter>
+    <BrowserRouter basename="/eyewear_pro">
       <App />
     </BrowserRouter>
   </GlassProvider>

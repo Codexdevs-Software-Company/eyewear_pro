@@ -1,7 +1,7 @@
   const slideData = [
     {
       type: "slide1",
-      imgUrl: "../../../images/sliderPic1.png",
+      imgUrl: "/eyewear_pro/images/sliderPic1.png",
       heading1: "sun",
       heading2: "optical",
       heading3: "anti rad",
@@ -14,14 +14,14 @@
     },
     {
       type: "slide2",
-      imgUrl: "../../../images/slidePic2.png",
+      imgUrl: "/eyewear_pro/images/slidePic2.png",
       heading2: "optical",
       para1: "Best choice of this week",
       heading4: "EYEWEAR"
     },
       {
       type: "slide3",
-      imgUrl: "../../../images/slidePic3.png",
+      imgUrl: "/eyewear_pro/images/slidePic3.png",
       heading2: "anti rad",
       para1: "Fall 2025",
       heading4: "COLLECTION"
