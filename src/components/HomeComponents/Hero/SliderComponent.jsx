@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from "react-slick";
 import Slide from "./Slide"
 import NextArrow from './NextArrow';
-import PrevArrow from './Prevarrow';
+import PrevArrow from './PrevArrow';
 import slideData from '../../../Data/slideData';
 export default function SliderComponent() {
 
