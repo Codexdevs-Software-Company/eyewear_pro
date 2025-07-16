@@ -4,17 +4,17 @@ const button = tv({
   base: "bg-primary",
   variants: {
     varient: {
-      primary: " bg-primary text-secondary  cursor-pointer",
+      primary: " bg-primary text-secondary font-Inter font-normal  cursor-pointer",
       secondary: "bg-radial from-[#602A9A] to-[#000] text-secondary cursor-pointer",
-      third: "bg-radial from-[#602A9A] to-[#000] text-secondary cursor-pointer",
-      fourth: "text-secondary bg-0 cursor-pointer"
+      third: "font-Itim font-normal bg-gradient-to-r from-[#000] via-[#602A9A] to-[#000] text-secondary  cursor-pointer",
+      fourth: "text-secondary font-Inter font-normal bg-0 cursor-pointer"
     },
     size: {
-      sm: " w-56 text-[1rem] py-[0.375rem] px-[0.938rem] mt-4 ml-4 border-none rounded-xl outline-none",
+      sm: " w-56 text-[0.89rem] py-[0.375rem] px-[0.938rem] mt-4 ml-4 border-none rounded-xl outline-none",
       md: "rounded-xl py-[2rem] w-[90%] border-none outline-none",
-      lg: "rounded-xl py-[2rem] w-[90%] border-none outline-none",
+      lg: "rounded-xl text-[64px] py-[2rem] w-full border-none outline-none",
       xl: " w-56 text-[0.875rem] py-[0.375rem] px-[0.938rem] mt-4 ml-8 border-none rounded-xl outline-none",
-      xl2: "w-24 p-0 text-[1.5rem] outline-none"
+      xl2: " p-0 text-2xl outline-none"
 
     },
     loading: {

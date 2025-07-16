@@ -1,18 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&family=Itim&display=swap');
 @import "tailwindcss";
 
-@theme  {
+@theme{
     --color-background : #000000;
     --color-primary : #602A9A;
-    --color-secondary : #fff
+    --color-secondary : #fff;
+    --font-Itim: "Itim", "cursive";
+    --font-Inter: "Inter", "sans-serif";
+    
 }
 .roundedButton{
   @apply
      bg-secondary
-     rounded-full
-     w-[5rem]
-     text-center;
+      rounded-full
+      w-[7rem]
+      text-center
+      font-Itim
+      font-normal
+      text-2xl
 }
-
+.sliderstyle{
+  @apply
+       font-Inter
+       font-medium
+       text-secondary
+}
 .custom-dots .slick-dots li button:before {
   font-size: 5px; /* Default: 6px */
   background-color: black;

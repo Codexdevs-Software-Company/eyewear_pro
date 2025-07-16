@@ -15,7 +15,7 @@ export default function SunGlass({currElemnt}) {
        <div className='w-[100%] ' onClick={handleSunGlassClick} >
          <img className='cursor-pointer object-fill' src={pic} alt={title} />
        </div>
-       <p className='text-secondary cursor-pointer text-5xl' onClick={handleSunGlassClick}>{title}</p>
+       <p className='text-secondary cursor-pointer font-Inter font-normal text-4xl' onClick={handleSunGlassClick}>{title}</p>
     </div>
   )
 }
