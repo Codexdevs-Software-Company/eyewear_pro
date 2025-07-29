@@ -9,7 +9,7 @@ export function GlassProvider({ children }) {
   const [frames, setFrames] = useState([]);
   const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
   
-  const selectCategory = (category) => {
+  const selectCategory = (category) => {    
     let newFrames = [];
     if (category === "sun") newFrames = sunData;
     else if (category === "optical") newFrames = opticalData;

@@ -1,12 +1,12 @@
 const sunData = [
-"images/sunPic1.png",
-"images/sunPic2.png",
-"images/sunPic3.png",
-"images/sunPic4.png",
-"images/sunPic5.png",
-"images/sunPic6.png",
-"images/sunPic7.png",
-"images/sunPic8.png",
-"images/sunPic9.png",
+"images/sunPic1.webp",
+"images/sunPic2.webp",
+"images/sunPic3.webp",
+"images/sunPic4.webp",
+"images/sunPic5.webp",
+"images/sunPic6.webp",
+"images/sunPic7.webp",
+"images/sunPic8.webp",
+"images/sunPic9.webp",
   ]
 export default sunData;

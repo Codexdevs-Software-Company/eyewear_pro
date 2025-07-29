@@ -1,4 +1,3 @@
-import React from 'react'
 import Slider from "react-slick";
 import Slide from "./Slide"
 import NextArrow from './NextArrow';
@@ -20,7 +19,7 @@ export default function SliderComponent() {
   };
 
   return (
-    <div className=" ml-[3rem] mr-[4rem]">
+    <div className=" ml-[2.4rem] mr-[2.4rem]  md:ml-[3rem] md:mr-[4rem]">
       <Slider {...settings} className="custom-dots">
         {
           slideData.map((slide , index)=>(

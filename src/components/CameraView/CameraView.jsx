@@ -2,106 +2,125 @@ import React, { useRef, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useGlass } from "../../context/GlassContext";
 import Button from "../button/Button";
-export default function Camera() {
+import {
+  openCamera,
+  stopCamera,
+  handleClose as closeHandler,
+  calculateFramePosition,
+  handleSave as saveHandler,
+} from "../../utils/CameraViewHelper";
+export default function CameraView() {
   const videoRef = useRef(null);
   const streamRef = useRef(null);
+  const canvasRef = useRef(null);
+  const frameImageRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isCameraReady, setIsCameraReady] = useState(false); 
-  const [uploadedImage, setUploadedImage] = useState(null);
   const { selectedFrame, selectCategory, nextFrame, prevFrame, resetFrames } =
     useGlass();
- 
-  const openCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        streamRef.current = stream;
-        setTimeout(() => {
-          setIsCameraReady(true);
-        }, 500);
-      }
-    } catch (error) {
-      alert("Please allow camera access");
-    }
-  };
+  const [isCameraReady, setIsCameraReady] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [framePosition, setFramePosition] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0,
+  });
 
-  const stopCamera = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-    }
-  };
-
-  const handleClose = () => {
-    stopCamera();
-    const backTo = location.state?.from || "/home";
-    navigate(backTo);
-  };
   useEffect(() => {
     const image = location.state?.uploadedImage;
     if (image) {
       setUploadedImage(image);
     } else {
-      openCamera();
+      openCamera(videoRef, streamRef, setIsCameraReady);
     }
+    calculateFramePosition(setFramePosition);
+
+    const handleResize = () => calculateFramePosition(setFramePosition);
+    window.addEventListener("resize", handleResize);
     return () => {
-      stopCamera();
+      stopCamera(streamRef);
+      window.addEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div className="flex justify-center min-h-screen bg-secondary">
-      <div className="flex flex-col gap-10 mr-4 mt-10">
-        <Button onClick={handleClose} varient="primary" size="sm">
-          Quit
-        </Button>
-        <Button
-          onClick={() => selectCategory("sun")}
-          varient="primary"
-          size="sm">
-          Sun
-        </Button>
-        <Button
-          onClick={() => selectCategory("optical")}
-          varient="primary"
-          size="sm">
-          Optical
-        </Button>
-        <Button
-          onClick={() => selectCategory("antirad")}
-          varient="primary"
-          size="sm">
-          Anti rad
-        </Button>
-      </div>
+    <div className=" flex flex-col md:flex-row justify-center items-center  w-screen  relative bg-secondary pb-10">
 
-      <div className="w-[70%] flex flex-col items-center mt-4 ">
-        <div className="h-[29rem] w-[40rem] flex justify-center relative">
-          {uploadedImage ? (
-            <img
-              src={uploadedImage}
-              alt="Uploaded"
-              className="h-[100%] w-[100%] object-fill"
-            />
-          ) : (
-            <video
-              ref={videoRef}
-              autoPlay
-              className=" rounded h-[100%] w-[100%]"
-            />
-          )}
-          {(uploadedImage || isCameraReady) && selectedFrame && (
-            <img
-              src={selectedFrame}
-              alt="Frame"
-              className="absolute top-25 left-20 h-[8rem] w-[30rem] object-contain pointer-events-none"
-            />
-          )}
+        <div className="flex flex-col justify-center items-center   gap-2 md:gap-6 lg:gap-10  md:ml-8 lg:mr-24 w-full md:w-[30%] lg:w-[20%] order-2 md:order-none">
+          <Button
+            onClick={() => closeHandler(streamRef, navigate, location)}
+            varient="primary"
+            size="sm"
+            className="order-4"
+            >
+            Quit
+          </Button>
+          <Button
+            onClick={() =>
+              saveHandler(
+                selectedFrame,
+                canvasRef,
+                uploadedImage,
+                isCameraReady,
+                videoRef,
+                framePosition
+              )
+            }
+            varient="primary"
+            size="sm"
+            className="order-3">
+            Save
+          </Button>
+          <Button
+            onClick={() => selectCategory("sun")}
+            varient="primary"
+            size="sm">
+            Sun
+          </Button>
+          <Button
+            onClick={() => selectCategory("optical")}
+            varient="primary"
+            size="sm">
+            Optical
+          </Button>
+          <Button
+            onClick={() => selectCategory("antirad")}
+            varient="primary"
+            size="sm">
+            Anti rad
+          </Button>
         </div>
-        <div className="flex gap-6">
-          <Button onClick={resetFrames} varient="primary" size="sm">
+
+        <div className="w-full  lg:w-[50%] relative flex flex-col justify-center md:ml-6 lg:ml-0  md:mt-8 lg:mt-4  ">
+          <div className=" preview-container w-full h-[22rem] lg:h-[28rem] lg:max-w-[700px]  flex justify-center overflow-hidden relative ">
+            {uploadedImage ? (
+              <img
+                src={uploadedImage}
+                alt="Uploaded"
+                className=" h-full  object-contain"
+              />
+            ) : (
+              <video ref={videoRef} autoPlay className="w-full h-[100%] " />
+            )}
+            {(uploadedImage || isCameraReady) && selectedFrame && (
+              <img
+                ref={frameImageRef}
+                src={selectedFrame}
+                alt="Frame overlay"
+                className="absolute pointer-events-none object-contain"
+                style={{
+                  top: `${framePosition.top * 100}%`,
+                  left: `${framePosition.left * 100}%`,
+                  width: `${framePosition.width * 100}%`,
+                  height: `${framePosition.height * 100}%`,
+                }}
+              />
+            )}
+            <canvas className="hidden" ref={canvasRef} id="your-canvas-id" />
+          </div>
+          <div className=" flex justify-center w-full flex-wrap lg:flex-nowrap gap-2 lg:gap-6">
+          <Button onClick={resetFrames} varient="primary" size="sm" className="order-3">
             Reset
           </Button>
           <Button onClick={prevFrame} varient="primary" size="sm">
@@ -111,7 +130,7 @@ export default function Camera() {
             Next
           </Button>
         </div>
-      </div>
+        </div>
     </div>
   );
 }

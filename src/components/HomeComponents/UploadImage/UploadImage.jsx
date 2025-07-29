@@ -6,9 +6,7 @@ export default function UploadImage() {
     navigate("/camera")
   }
   
-  const handleImageUpload = (e) => {
-    console.log("upload image button clicked ");
-    
+  const handleImageUpload = (e) => { 
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
@@ -17,7 +15,7 @@ export default function UploadImage() {
   };
   return (
     <div className='w-screen mt-28  flex flex-col justify-center items-center gap-[1.75rem]'>
-      <label className='relative  text-secondary font-Itim font-normal text-[64px] bg-gradient-to-r from-[#000] via-[#602A9A] to-[#000] text-center w-full py-[2rem] cursor-pointer'> 
+      <label className='relative  text-secondary font-Itim font-normal text-lg  md:text-[64px] bg-gradient-to-r from-[#000] via-[#602A9A] to-[#000] text-center w-full py-[2rem] cursor-pointer'> 
         Upload image
        <input
          type="file"

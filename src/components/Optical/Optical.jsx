@@ -11,21 +11,21 @@ export default function Optical() {
   };
   return (
     <div className="bg-secondary">
-      <div className="w-screen ">
+      <div className="w-screen h-42 md:h-auto">
         
             <img
-                src= "images/OpticalImg.png" alt="Sun-Glass"
-                 className="object-fill"
+                src= "images/OpticalImg.webp" alt="Sun-Glass"
+                 className="h-[100%] w-full object-fill"
              />
        
       </div>
-      <div className="w-screen py-16 px-[2.31rem] ">
-       <div  className="flex  justify-center items-center w-[100%] gap-28 flex-wrap">
+      <div className="w-screen py-12 md:py-16 md:px-[2.31rem] ">
+       <div  className="flex  justify-center items-center w-[100%] gap-8 md:gap-28 flex-wrap">
         {
             opticalData.map((currImg,index)=>(
-                    <div key={index} className="flex flex-col items-center">
-                         <img src={currImg} alt={`glass ${index}`} className="w-78 h-60" />
-                         <Button onClick={()=>{handleUse(currImg)}} varient="primary" size="xl">Use</Button>
+                    <div key={index} className="flex flex-col justify-center items-center">
+                         <img src={currImg} alt={`glass ${index}`} className="w-50 h-35 md:w-78 md:h-60" />
+                         <Button onClick={()=>{handleUse(currImg)}} varient="primary" size="xl" className="mr-8 ">Use</Button>
                     </div>                
             ))
         }

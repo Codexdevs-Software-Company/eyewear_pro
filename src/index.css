@@ -1,40 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&family=Itim&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&family=Itim&display=swap");
 @import "tailwindcss";
 
-@theme{
-    --color-background : #000000;
-    --color-primary : #602A9A;
-    --color-secondary : #fff;
-    --font-Itim: "Itim", "cursive";
-    --font-Inter: "Inter", "sans-serif";
-    
+@theme {
+  --color-background: #000000;
+  --color-primary: #602a9a;
+  --color-secondary: #fff;
+  --font-Itim: "Itim", "cursive";
+  --font-Inter: "Inter", "sans-serif";
 }
-.roundedButton{
-  @apply
-     bg-secondary
+.roundedButton {
+  @apply bg-secondary
       rounded-full
-      w-[7rem]
       text-center
       font-Itim
       font-normal
-      text-2xl
-}
-.sliderstyle{
-  @apply
-       font-Inter
-       font-medium
-       text-secondary
-}
-.custom-dots .slick-dots li button:before {
-  font-size: 5px; /* Default: 6px */
-  background-color: black;
-  border: .5px solid #fff; /* Inactive color */
-  border-radius: 50%;
-  opacity: 1;
 }
 
-.custom-dots .slick-dots li.slick-active button:before {
-  background-color: #fff; /* e.g. Tailwind's blue-500 */
-  color: #fff;
-  font-size: .5px;
+.sliderstyle {
+  @apply font-Inter
+         font-medium
+       text-secondary;
 }
+.slick-dots li {
+  margin: 0 14px !important;
+  width: 2px !important;
+  height: 2px !important;
+}
+
+.slick-dots li button {
+  width: 12px !important;
+  height: 12px !important;
+  width: 6px !important;
+  height: 6px !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: 0 !important;
+}
+
+.slick-dots li button:before {
+  content: "" !important;
+  width: 8px !important;
+  height: 8px !important;
+  border: 1px solid #fff !important;
+  border-radius: 50% !important;
+  background-color: #000 !important;
+  opacity: 1 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+.slick-dots li.slick-active button:before {
+   background-color: #fff !important;
+  transform: scale(1.2) !important;
+ }

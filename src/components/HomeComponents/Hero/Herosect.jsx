@@ -5,7 +5,7 @@ export default function Herosect() {
 
 
   return (
-    <div className='mt-10  w-screen '>
+    <div className=' mt-8 md:mt-10  w-screen '>
         < SliderComponent />
     </div>
   )
