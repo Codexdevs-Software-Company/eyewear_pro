@@ -1,48 +1,89 @@
-const openCamera = async (videoRef, streamRef,setIsCameraReady) => {
+export const openCamera = async (videoRef, streamRef, setIsCameraReady, setCameraError, setIsLoading) => {
   try {
+    setIsLoading(true);
+    setCameraError(null);
+    
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    
     if (videoRef.current) {
       videoRef.current.srcObject = stream;
       streamRef.current = stream;
-      setTimeout(() => setIsCameraReady(true), 500);
+      await new Promise((resolve) => {
+        videoRef.current.onplaying = () => {
+          setIsCameraReady(true);
+          setIsLoading(false);
+          resolve();
+        };
+   
+        setTimeout(() => {
+          setIsCameraReady(true);
+          setIsLoading(false);
+          resolve();
+        }, 1000);
+      });
     }
   } catch (error) {
-    alert("Please allow camera access to use this feature");
+    setIsLoading(false);
+    
+    if (error.name === 'NotAllowedError') {
+      setCameraError('Your camera is blocked. Please allow from browser settings and reload the page.');
+    } else if (error.name === 'NotFoundError' || error.name === 'OverconstrainedError') {
+      setCameraError('No camera found. Please check your device and try again.');
+    } else {
+      setCameraError('Please allow camera access to use this feature');
+    }
+    
+    return error.message;
   }
 };
-
-const stopCamera = (streamRef) => {
+export const stopCamera = (streamRef) => {
   if (streamRef.current) {
     streamRef.current.getTracks().forEach((track) => track.stop());
     streamRef.current = null;
   }
 };
-
-const handleClose = (streamRef, navigate, location) => {
+export const handleClose = (
+  streamRef,
+  videoRef,
+  setIsCameraReady,
+  navigate,
+  location,
+  setCameraError,
+  resetFrames
+) => {
   stopCamera(streamRef);
+  if (videoRef.current) {
+    videoRef.current.srcObject = null;
+  }
+
+ setIsCameraReady(false);
+  setCameraError(null);
+  resetFrames();
+
   navigate(location.state?.from || "/home");
+  
 };
 
- const calculateFramePosition = (setFramePosition) => {
+export const calculateFramePosition = (setFramePosition) => {
   const previewContainer = document.querySelector(".preview-container");
   if (!previewContainer) return;
 
-
   setFramePosition({
-      top: 0.25, 
-      left: 0.3,
-      width: 0.4,
-      height: 0.25,
+    top: 0.25,
+    left: 0.3,
+    width: 0.4,
+    height: 0.25,
   });
 };
 
-const handleSave = async (
+export const handleSave = async (
   selectedFrame,
   canvasRef,
   uploadedImage,
   isCameraReady,
   videoRef,
-  framePosition
+  framePosition,
+
 ) => {
   if (!selectedFrame) {
     alert("Please choose a frame first");
@@ -102,18 +143,11 @@ const handleSave = async (
     });
 
     const link = document.createElement("a");
-    link.download = `glasses-try-on-${Date.now()}.png`;
+    link.download = `generated_image_${Date.now()}.webp`;
     link.href = canvas.toDataURL("image/png");
     link.click();
   } catch (error) {
     console.error("Error saving image:", error);
     alert("Could not save image. Please try again.");
   }
-};
-export {
-  openCamera,
-  stopCamera,
-  handleClose,
-  calculateFramePosition,
-  handleSave,
 };

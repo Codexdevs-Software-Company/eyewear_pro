@@ -12,12 +12,10 @@ export default function Sun() {
   return (
     <div className="bg-secondary">
       <div className="w-screen h-42 md:h-auto">
-        
             <img
                 src= "images/SunGlassImg.webp" alt="Sun-Glass"
                  className="h-[100%] w-full object-fill text-secondary"
              />
-       
       </div>
       <div className="w-screen py-12 md:py-16 md:px-[2.31rem] ">
           <div  className="flex  justify-center items-center gap-8 md:gap-28 flex-wrap ">

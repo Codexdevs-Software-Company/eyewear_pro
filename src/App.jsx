@@ -12,7 +12,7 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./index.css";
 const App = () => {
   return (
-    <div className="bg-background w-full min-h-screen flex flex-col overflow-x-hidden  ">
+    <div className="bg-background w-full min-h-screen flex flex-col   ">
       <ScrollToTop />
       <Nav />
       <main className="flex-1">
